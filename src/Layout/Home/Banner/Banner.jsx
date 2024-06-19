@@ -46,18 +46,31 @@ const Banner = () => {
                     className="mySwiper"
                 >
                     <SwiperSlide>
-                        <div className="container1">
-                            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                        <div className="relative">
+                            <img className="brightness-50 w-full" src="https://i.ibb.co/x5K6rQx/image-1.jpg" />
+                            <div className="absolute bottom-16 left-10">
+                                <h2 className="text-xl font-bold text-white my-3">Online Surveys</h2>
+                                <h2 className="text-lg font-semibold text-white"><i>Complete a 10-Minute Customer Satisfaction Survey</i></h2>
+                            </div>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                        <div className="relative">
+                            <img className="brightness-50 w-full" src="https://i.ibb.co/1v6jQzs/image-2.jpg" />
+                            <div className="absolute bottom-16 left-10">
+                                <h2 className="text-xl font-bold text-white my-3">Data Entry</h2>
+                                <h2 className="text-lg font-semibold text-white"><i>Enter Data from Receipts into a Spreadsheet</i></h2>
+                            </div>
+                        </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+                        <div className="relative">
+                            <img className="brightness-50 w-full" src="https://i.ibb.co/SP59twV/image-3.jpg" />
+                            <div className="absolute bottom-16 left-10">
+                                <h2 className="text-xl font-bold text-white my-3">App Testing</h2>
+                                <h2 className="text-lg font-semibold text-white"><i>Enter Data from Receipts into a Spreadsheet</i></h2>
+                            </div>
+                        </div>
                     </SwiperSlide>
                 </Swiper>
             </Slide>
