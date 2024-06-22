@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Title from "../../../Components/Title";
-import useAxiosPublic from '../../../Hooks/useAxiosPublic'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Rating } from '@smastrom/react-rating'
 
@@ -11,15 +10,17 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 // import required modules
 import { Navigation } from 'swiper/modules';
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const Testimonials = () => {
     const [reviews, setReviews] = useState([]);
+    const axiosPublic = useAxiosPublic();
     useEffect(() => {
-        useAxiosPublic.get('/reviews')
+        axiosPublic.get('/reviews')
             .then(res => {
                 setReviews(res.data)
             })
-    }, [])
+    }, [axiosPublic])
     return (
         <div className="mt-10">
             <Title heading={'What Our Users Are Saying'} subHeading='Discover how TaskMaster is making a difference for users. Read their stories and see how our platform has helped them achieve their goals and earn rewards.'></Title>

@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import logo from '../../assets/task_master.jpg'
+import logo from '../../../assets/task_master.jpg'
 
 const Header = () => {
     const navLinks = <>
