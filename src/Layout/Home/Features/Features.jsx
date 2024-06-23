@@ -12,8 +12,7 @@ const Features = () => {
             setFeatures(res.data);
         })
     },[axiosPublic])
-
-    console.log(features)
+    
     return (
         <div className="mt-10">
             <Title heading={"Features"} subHeading="Discover the Benefits of Using TaskMaster"></Title>
