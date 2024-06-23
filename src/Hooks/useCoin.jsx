@@ -9,6 +9,7 @@ const useCoin = () => {
         queryKey: ['coin', user?.email],
         queryFn: async()=>{
             const res = await axiosSecure.get(`/coin/${user?.email}`);
+            console.log('user coin data ', res.data)
             return res.data.coin;
         },
         enabled: !!user?.email
