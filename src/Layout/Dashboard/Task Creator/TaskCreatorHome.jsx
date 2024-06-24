@@ -4,6 +4,7 @@ import useAuth from "../../../Hooks/useAuth";
 import useCoin from "../../../Hooks/useCoin";
 import Title from "../../../Components/Title";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const TaskCreatorHome = () => {
     const [pendingTasks, setPendingTasks] = useState([]);
@@ -16,13 +17,20 @@ const TaskCreatorHome = () => {
     const [coin] = useCoin();
     console.log(coin.coin, pendingTasks)
 
-    const handleApprove =(id)=>{
-        axiosSecure.patch(`/submissions/${id}`, {status: 'approved'})
-        .then(res=>console.log(res))
+    const handleApprove = (id) => {
+        axiosSecure.patch(`/submissions/${id}`, { status: 'approved' })
+            .then(res => console.log(res))
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Approval Successful",
+            showConfirmButton: false,
+            timer: 1500
+        });
     }
-    const handleReject = id =>{
-        axiosSecure.patch(`/submissions/${id}`, {status: 'rejected'})
-        .then(res=>console.log(res))
+    const handleReject = id => {
+        axiosSecure.patch(`/submissions/${id}`, { status: 'rejected' })
+            .then(res => console.log(res))
     }
     return (
         <div className="space-y-2 px-6">
@@ -67,10 +75,10 @@ const TaskCreatorHome = () => {
                                             </div>
                                         </div>
                                     </dialog>
-                                    </td>
-                                    <td className="flex gap-2">
+                                </td>
+                                <td className="flex gap-2">
                                     <button className="btn mx-2 flex" onClick={() => handleApprove(submission._id)}><FaCheckCircle className='text-lg mr-2 text-green-600' />
-                                    Approved</button>
+                                        Approved</button>
                                     <button className="btn mx-2 flex" onClick={() => handleReject(submission._id)}><FaTimesCircle className='text-lg text-red-700 mr-2' />Reject</button>
                                 </td>
                             </tr>
