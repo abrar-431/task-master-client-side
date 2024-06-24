@@ -49,7 +49,7 @@ const Register = () => {
                 let totalCoin;
                 if (data.role === 'Worker') {
                     totalCoin = 10;
-                } else {
+                } else if(data.role=='Task Creator'){
                     totalCoin = 50;
                 }
 
@@ -165,10 +165,10 @@ const Register = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-black">Photo URL</span>
+                                    <span className="label-text text-black">Photo</span>
                                 </label>
                                 <div>
-                                    <input type="file" placeholder="Photo URL"  {...register("photo", { required: true })} className={theme === 'sunset' ?
+                                    <input type="file" placeholder="Photo"  {...register("photo", { required: true })} className={theme === 'sunset' ?
                                         "input-bordered w-full file-input bg-gray-50"
                                         :
                                         "input-bordered w-full file-input"

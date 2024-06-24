@@ -2,18 +2,19 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
 import useAxiosSecure from "./useAxiosSecure";
 
-const useUserRole = () => {
+
+const useNotifications = () => {
     const {user, loading} = useAuth();
     const axiosSecure = useAxiosSecure();
-    const {data: role = {}} = useQuery({
-        queryKey: ['role', user?.email],
+    const {data: notifications = [], refetch} = useQuery({
+        queryKey: ['notification', user?.email],
         enabled: !loading,
         queryFn: async()=>{
-            const res = await axiosSecure.get(`/user/${user?.email}`);
+            const res = await axiosSecure.get(`/notifications/${user?.email}`);
             return res.data;
         },
     })
-    return role;
+    return [notifications, refetch];
 };
 
-export default useUserRole;
+export default useNotifications;

@@ -9,11 +9,14 @@ import './Dashboard.css'
 import Footer from '../Footer/Footer';
 import useAuth from '../../../Hooks/useAuth';
 import useCoin from '../../../Hooks/useCoin';
+import useNotifications from '../../../Hooks/useNotifications';
 
 const Dashboard = () => {
     const { user } = useAuth();
     const role = useUserRole();
-    const coin = useCoin();
+    const [coin] = useCoin();
+    const [notifications] = useNotifications();
+    console.log(notifications)
     return (
         <div className="flex">
             <div className="w-64 bg-sky-900 text-white min-h-screen flex flex-col">
@@ -22,7 +25,7 @@ const Dashboard = () => {
                 </div>
                 <ul className="menu flex-grow">
                     {
-                        role === 'Admin' ? <>
+                        role.role === 'Admin' ? <>
                             <li>
                                 <NavLink to='/dashboard/adminHome'><FaHome className="text-xl"></FaHome>Admin Home</NavLink>
                             </li>
@@ -32,7 +35,7 @@ const Dashboard = () => {
                             <li>
                                 <NavLink to='/dashboard/manageTasks'><FaList className="text-xl"></FaList>Manage Tasks</NavLink>
                             </li>
-                        </> : role === 'Task Creator' ? <>
+                        </> : role.role === 'Task Creator' ? <>
                             <li>
                                 <NavLink to='/dashboard/home'><FaHome className="text-xl"></FaHome>Home</NavLink>
                             </li>
@@ -49,7 +52,7 @@ const Dashboard = () => {
                             <li>
                                 <NavLink to='/dashboard/paymentHistory'><FaCoins className="text-xl"></FaCoins>Payment History</NavLink>
                             </li>
-                        </> : role === 'Worker' ? <>
+                        </> : role.role === 'Worker' ? <>
                             <li>
                                 <NavLink to='/dashboard/home'><FaHome className="text-xl"></FaHome>Home</NavLink>
                             </li>
@@ -98,18 +101,35 @@ const Dashboard = () => {
                         <div className='flex gap-2'>
                             <div className="flex items-center space-x-2">
                                 <FaCoins className="text-xl" />
-                                <span>{coin} |</span>
+                                <span>{coin.coin} |</span>
                             </div>
                             <img className='w-10 h-10 rounded-full' src={user.photoURL} alt={user.displayName} />
                         </div>
                         <div className="flex items-center space-x-2">
                             <div className="flex gap-2">
-                                <span>{role} |</span>
+                                <span>{role.role} |</span>
                                 <span>{user.displayName}</span>
                             </div>
                         </div>
                     </div>
-                    <FaBell className="text-xl" />
+                    
+                    <button className="btn" onClick={() => document.getElementById('my_modal_2').showModal()}><FaBell className="text-xl" /></button>
+                    <dialog id="my_modal_2" className="modal">
+                        <div className="modal-box">
+                            {
+                                notifications.map((notification,idx)=><div key={notification._id}>
+                                   {idx+1}. Dear {notification.to_email}, <br />
+                                    {notification.message} <br /> <br />
+
+                                    Time: {notification.current_time}
+                                </div>)
+                            }
+                            <p className="py-4 text-gray-400">Press ESC key or click outside to close</p>
+                        </div>
+                        <form method="dialog" className="modal-backdrop">
+                            <button>close</button>
+                        </form>
+                    </dialog>
                 </div>
                 <Outlet className="p-8" />
                 <Footer></Footer>

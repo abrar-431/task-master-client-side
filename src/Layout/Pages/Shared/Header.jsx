@@ -5,7 +5,7 @@ import useCoin from "../../../Hooks/useCoin";
 
 const Header = () => {
     const { user, logOut } = useAuth();
-    const coin = useCoin();
+    const [coin] = useCoin();
 
     const handleLogOut = () => {
         logOut()
@@ -61,7 +61,7 @@ const Header = () => {
                                 <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
                                     <img className='w-10 h-10 rounded-full' src={user.photoURL} alt={user.displayName} />
                                 </div>
-                                <p>+{coin}</p>
+                                <p>+{coin.coin}</p>
                             </div>
                             :
                             <a className="hover:text-sky-500 font-semibold ml-0 md:ml-4">Watch Demo</a>
