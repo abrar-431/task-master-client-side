@@ -16,11 +16,17 @@ import TaskCreatorHome from "../Layout/Dashboard/Task Creator/TaskCreatorHome";
 import AdminRoute from "./AdminRoute";
 import ManageUsers from "../Layout/Dashboard/Admin/ManageUsers";
 import ManageTasks from "../Layout/Dashboard/Admin/ManageTasks";
+import WithDrawals from "../Layout/Dashboard/Worker/WithDrawals";
+import AdminHome from "../Layout/Dashboard/Admin/AdminHome";
+import ErrorElement from "../Components/ErrorElement";
+import PurchaseHistory from "../Layout/Dashboard/Task Creator/PurchaseHistory";
+import PurchaseCoin from "../Layout/Dashboard/Task Creator/PurchaseCoin";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Root></Root>,
+      errorElement: <ErrorElement></ErrorElement>,
       children: [
         {
             path: '/',
@@ -41,6 +47,10 @@ const router = createBrowserRouter([
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
         // Admin Routes
+        {
+          path: 'adminHome',
+          element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+        },
         {
           path: 'manageUsers',
           element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
@@ -64,8 +74,16 @@ const router = createBrowserRouter([
         },
         {
           path: 'updateTasks/:id',
-          loader: ({params})=>fetch(`http://localhost:5000/tasks/${params.id}`),
+          loader: ({params})=>fetch(`https://b9a12-server-side-abrar-431.vercel.app/tasks/${params.id}`),
           element: <UpdateTask></UpdateTask>
+        },
+        {
+          path: 'paymentHistory',
+          element: <PurchaseHistory></PurchaseHistory>
+        },
+        {
+          path: 'purchaseCoin',
+          element: <PurchaseCoin></PurchaseCoin>
         },
 
         // Worker Routes
@@ -79,12 +97,16 @@ const router = createBrowserRouter([
         },
         {
           path: 'tasks/:id',
-          loader: ({params})=>fetch(`http://localhost:5000/tasks/${params.id}`),
+          loader: ({params})=>fetch(`https://b9a12-server-side-abrar-431.vercel.app/tasks/${params.id}`),
           element: <Taskdetails></Taskdetails>
         },
         {
           path: 'mySubmissions',
           element: <MySubmissions></MySubmissions>
+        },
+        {
+          path: 'withdrawals',
+          element: <WithDrawals></WithDrawals>
         }
       ]
     }

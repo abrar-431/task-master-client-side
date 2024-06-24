@@ -43,16 +43,18 @@ const TaskList = () => {
                         tasks.map(task=><Task key={task._id} task={task}></Task>)
                     }
             </div>
-            <div className='pages-container'>
-                <p>Current Page: {currentPage}</p>
+            <div className='pagination'>
+                <p>Current page: {currentPage}</p>
                 <button onClick={handlePrevPage}>Prev</button>
                 {
-                    pages.map(page=> <button 
-                        className={currentPage === page ? 'selected':''}
-                        onClick={()=>setCurrentPage(page)} key={page}>{page}</button>)
+                    pages.map(page => <button
+                        className={currentPage === page ? 'selected' : undefined}
+                        onClick={() => setCurrentPage(page)}
+                        key={page}
+                    >{page}</button>)
                 }
                 <button onClick={handleNextPage}>Next</button>
-                <select name="" value={itemsPerPage} onChange={handleItemsPerPage} id="">
+                <select value={itemsPerPage} onChange={handleItemsPerPage} name="" id="">
                     <option value="5">3</option>
                     <option value="10">9</option>
                     <option value="20">15</option>
