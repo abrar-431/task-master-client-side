@@ -13,6 +13,8 @@ import Taskdetails from "../Layout/Dashboard/Worker/Taskdetails";
 import MySubmissions from "../Layout/Dashboard/Worker/MySubmissions";
 import WorkerHome from "../Layout/Dashboard/Worker/WorkerHome";
 import TaskCreatorHome from "../Layout/Dashboard/Task Creator/TaskCreatorHome";
+import AdminRoute from "./AdminRoute";
+import ManageUsers from "../Layout/Dashboard/Admin/ManageUsers";
 
 const router = createBrowserRouter([
     {
@@ -37,6 +39,11 @@ const router = createBrowserRouter([
       path: '/dashboard',
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
+        // Admin Routes
+        {
+          path: 'manageUsers',
+          element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+        },
         // Task Creator Routes
         {
           path: 'creatorHome',
