@@ -37,7 +37,7 @@ const Dashboard = () => {
                             </li>
                         </> : role.role === 'Task Creator' ? <>
                             <li>
-                                <NavLink to='/dashboard/home'><FaHome className="text-xl"></FaHome>Home</NavLink>
+                                <NavLink to='/dashboard/creatorHome'><FaHome className="text-xl"></FaHome>Home</NavLink>
                             </li>
                             <li>
                                 <NavLink to='/dashboard/myTasks'><FaList className="text-xl"></FaList>My Tasks</NavLink>
@@ -54,7 +54,7 @@ const Dashboard = () => {
                             </li>
                         </> : role.role === 'Worker' ? <>
                             <li>
-                                <NavLink to='/dashboard/home'><FaHome className="text-xl"></FaHome>Home</NavLink>
+                                <NavLink to='/dashboard/workerHome'><FaHome className="text-xl"></FaHome>Home</NavLink>
                             </li>
                             <li>
                                 <NavLink to='/dashboard/taskList'><FaList className="text-xl"></FaList>Task List</NavLink>

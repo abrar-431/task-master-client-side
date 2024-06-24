@@ -11,6 +11,7 @@ import UpdateTask from "../Layout/Dashboard/Task Creator/UpdateTask";
 import TaskList from "../Layout/Dashboard/Worker/TaskList";
 import Taskdetails from "../Layout/Dashboard/Worker/Taskdetails";
 import MySubmissions from "../Layout/Dashboard/Worker/MySubmissions";
+import WorkerHome from "../Layout/Dashboard/Worker/WorkerHome";
 
 const router = createBrowserRouter([
     {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
         },
 
         // Worker Routes
+        {
+          path: 'workerHome',
+          element: <WorkerHome></WorkerHome>
+        },
         {
           path: 'taskList',
           element: <TaskList></TaskList>
