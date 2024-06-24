@@ -12,6 +12,7 @@ import TaskList from "../Layout/Dashboard/Worker/TaskList";
 import Taskdetails from "../Layout/Dashboard/Worker/Taskdetails";
 import MySubmissions from "../Layout/Dashboard/Worker/MySubmissions";
 import WorkerHome from "../Layout/Dashboard/Worker/WorkerHome";
+import TaskCreatorHome from "../Layout/Dashboard/Task Creator/TaskCreatorHome";
 
 const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
         // Task Creator Routes
+        {
+          path: 'creatorHome',
+          element: <TaskCreatorHome></TaskCreatorHome>
+        },
         {
           path: 'addTasks',
           element: <AddTask></AddTask>
