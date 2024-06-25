@@ -1,7 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import {
-    FaHome, FaList, FaBook, FaUser, FaCalendar,
-    FaShoppingCart, FaAd, FaCoins, FaBell
+    FaHome, FaList, FaBook, FaUser,  FaCoins, FaBell
 } from 'react-icons/fa';
 import logo from '../../../assets/task_master.jpg'
 import useUserRole from '../../../Hooks/useUserRole';
@@ -65,28 +64,8 @@ const Dashboard = () => {
                             <li>
                                 <NavLink to='/dashboard/withdrawals'><FaCoins className="text-xl"></FaCoins>Withdrawals</NavLink>
                             </li>
-                        </> : <>
-                            <li>
-                                <NavLink to="/dashboard/userHome">
-                                    <FaHome className="text-xl"></FaHome>User Home
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dashboard/reservation">
-                                    <FaCalendar className="text-xl"></FaCalendar>Reservation</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dashboard/cart">
-                                    <FaShoppingCart className="text-xl"></FaShoppingCart>My Cart </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dashboard/review">
-                                    <FaAd className="text-xl"></FaAd>Add a Review</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dashboard/bookings">
-                                    <FaList className="text-xl"></FaList>My Bookings</NavLink>
-                            </li>
+                        </> :<>
+                        <span className="loading loading-spinner loading-lg"></span>
                         </>
                     }
                     <div className="divider"></div>
